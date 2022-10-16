@@ -12,12 +12,18 @@ static const char *fonts[] = {
 	"Symbols Nerd Font:size=10.7"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
-static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel] = { "#eeeeee", "#005577" },
-	[SchemeOut] = { "#000000", "#00ffff" },
+
+static char normfgcolor[] = "#bbbbbb";
+static char normbgcolor[] = "#222222";
+static char selfgcolor[]  = "#eeeeee";
+static char selbgcolor[]  = "#005577";
+static char *colors[SchemeLast][2] = {
+ 	/*     fg         bg       */
+	[SchemeNorm] = { normfgcolor, normbgcolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor  },
+	[SchemeOut]  = { "#000000",   "#00ffff" },
 };
+
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
 /* -h option; minimum height of a menu line */
@@ -32,3 +38,13 @@ static const char worddelimiters[] = " ";
 
 /* Size of the window border */
 static unsigned int border_width = 0;
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+	{ "color15", STRING, &normfgcolor },
+	{ "color0", STRING, &normbgcolor },
+	{ "color0", STRING, &selfgcolor },
+	{ "activeColor", STRING, &selbgcolor },
+};
