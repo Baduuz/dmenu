@@ -9,7 +9,8 @@ static int min_width = 500;                    /* minimum width when centered */
 static const char *fonts[] = {
 	"DejaVu Sans:size=10",
 	"Fira Code:size=10.5",
-	"Symbols Nerd Font:size=10.7"
+	"Symbols Nerd Font:size=10.7",
+	"Noto Color Emoji:size=10.5"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
@@ -45,6 +46,9 @@ static unsigned int border_width = 0;
 ResourcePref resources[] = {
 	{ "color15", STRING, &normfgcolor },
 	{ "color0", STRING, &normbgcolor },
-	{ "color0", STRING, &selfgcolor },
+	{ "color15", STRING, &selfgcolor },
 	{ "activeColor", STRING, &selbgcolor },
+	{ "centered", INTEGER, &centered },
+	{ "border", INTEGER, &border_width },
+	{ "lines", INTEGER, &lines },
 };
